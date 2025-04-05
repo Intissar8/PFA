@@ -20,4 +20,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Lab11_Ghannane"
-include(":QuizApp_Ghannane")
+include(":PFA")

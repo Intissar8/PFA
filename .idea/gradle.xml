@@ -10,7 +10,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/QuizApp_Ghannane" />
+            <option value="$PROJECT_DIR$/PFA" />
           </set>
         </option>
       </GradleProjectSettings>
