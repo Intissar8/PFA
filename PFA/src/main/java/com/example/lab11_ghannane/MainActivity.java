@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 else{
 
                     if(etMail.getText().toString().equals("Intissar") & etPassword.getText().toString().equals("123")){
-                        //  startActivity(new Intent(MainActivity.this,Quiz1.class));
+                          startActivity(new Intent(MainActivity.this,Profile.class));
                     }
                     else {
                         Toast.makeText(getApplicationContext(),"Login or password incorrect !",Toast.LENGTH_SHORT).show();
