@@ -1,19 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back_ground"
+    android:background="#FFFDE7"
     tools:context=".MainActivity">
 
+    <!-- Transparent overlay with theme color -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/princ_color"
-        android:alpha="0.7" />
-
+        android:background="#03A9F4"
+        android:alpha="0.6" />
+    <!-- App logo and title -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -34,17 +34,19 @@
             android:textStyle="bold"
             android:fontFamily="sans-serif-medium"
             android:textSize="32sp"
-            android:textColor="@color/white"/>
-
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 
+    <!-- CardView Login Form -->
     <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:cardCornerRadius="28dp"
         android:layout_marginBottom="-20dp"
-        android:id="@+id/card_view">
+        app:cardCornerRadius="28dp"
+        app:cardElevation="10dp"
+        app:cardBackgroundColor="#FFFFFF">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -57,8 +59,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Hello"
-                android:textColor="@color/princ_color"
+                android:text="@string/login_hello"
+                android:textColor="#57B2DE"
                 android:textSize="32sp"
                 android:textStyle="bold"/>
 
@@ -66,87 +68,78 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Please login using your information"
-                android:alpha="0.7"/>
+                android:text="@string/login_instructions"
+                android:textColor="#666666" />
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"/>
-
+            <!-- Email -->
+            <View android:layout_height="20dp" android:layout_width="match_parent"/>
             <TextView
+                android:text="@string/email"
+                android:textColor="#666666"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="email"
-                android:alpha="0.7"
-                android:textStyle="bold"/>
-
+                android:layout_height="wrap_content"/>
 
             <EditText
+                android:id="@+id/etMail"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:inputType="textEmailAddress"
                 android:hint="example@gmail.com"
-                android:id="@+id/etMail"
+                android:backgroundTint="#57B2DE"
                 android:drawableRight="@drawable/sharp_email_24" />
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"/>
-
+            <!-- Password -->
+            <View android:layout_height="20dp" android:layout_width="match_parent"/>
             <TextView
+                android:text="@string/password"
+                android:textColor="#666666"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Password"
-                android:alpha="0.7"
-                android:textStyle="bold"/>
-
-
+                android:layout_height="wrap_content"/>
 
             <EditText
+                android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:hint="ABCabc123##"
-                android:id="@+id/etPassword"
                 android:inputType="textPassword"
+                android:hint="ABCabc123##"
+                android:backgroundTint="#57B2DE"
                 android:drawableRight="@drawable/baseline_lock_24_sign_up" />
 
-
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="10dp"/>
-
+            <!-- Login Button -->
+            <View android:layout_height="16dp" android:layout_width="match_parent"/>
             <Button
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
                 android:id="@+id/blogin"
-                android:text="Sign in "/>
-            <ImageButton
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/google_icon_round"
-                android:textAlignment="center"
-                android:background="@color/white"
+                android:layout_height="50dp"
+                android:backgroundTint="#03A9F4"
+                android:textColor="#FFFFFF"
+                android:text="@string/login_button" />
+
+            <!-- Google Login -->
+            <View android:layout_height="12dp" android:layout_width="match_parent"/>
+            <ImageButton
                 android:id="@+id/bgoogle"
-                android:contentDescription="log in with Google"
-                />
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:src="@drawable/google_icon_round"
+                android:background="#FFFFFF"
+                android:contentDescription="@string/google_login"
+                android:elevation="2dp"
+                android:scaleType="centerInside" />
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="10dp"/>
+            <!-- Register -->
+            <View android:layout_height="12dp" android:layout_width="match_parent"/>
             <TextView
+                android:id="@+id/tvRegister"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="To Register click here "
-                android:id="@+id/tvRegister"
                 android:layout_gravity="center"
-                android:alpha="0.7"/>
-
-
+                android:text="@string/register_prompt"
+                android:textColor="#57B2DE"
+                android:textStyle="bold" />
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
-
-
 
 </RelativeLayout>

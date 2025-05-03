@@ -1,3 +1,54 @@
 <resources>
     <string name="app_name">Lab11_Ghannane</string>
+    <string name="change_language">Changer la langue</string>
+    <string name="english">Anglais</string>
+    <string name="french">Français</string>
+    <string name="login_hello">Bonjour</string>
+    <string name="login_instructions">Veuillez vous connecter avec vos informations</string>
+    <string name="email">Email</string>
+    <string name="password">Mot de passe</string>
+    <string name="login_button">Se connecter</string>
+    <string name="google_login">Se connecter avec Google</string>
+    <string name="register_prompt">Pas de compte ? Cliquez ici</string>
+    <string name="register_title">S\'inscrire</string>
+    <string name="username_hint">Nom d\'utilisateur</string>
+    <string name="confirm_password_hint">Confirmer le mot de passe</string>
+    <string name="profile">Profil</string>
+    <string name="home">Accueil</string>
+    <string name="offers">Offres</string>
+    <string name="history">Historique</string>
+    <string name="faq">Questions Fréquemment Posées</string>
+    <string name="registration_failed">Échec de inscription. Veuillez réessayer plus tard.</string>
+    <!-- Questions -->
+    <string name="faq_question_1">Comment puis-je suivre ma livraison en temps réel ?</string>
+    <string name="faq_question_2">Puis-je changer mon adresse de livraison après avoir passé commande ?</string>
+    <string name="faq_question_3">Quels sont les moyens de paiement disponibles ?</string>
+    <string name="faq_question_4">Puis-je choisir l’heure de livraison ?</string>
+    <string name="faq_question_5">Que faire si ma commande est en retard ?</string>
+    <string name="faq_question_6">Comment annuler une commande ?</string>
+    <string name="faq_question_7">Y a-t-il des frais de livraison ?</string>
+    <string name="faq_question_8">Comment puis-je contacter le service client ?</string>
+    <string name="faq_question_9">Puis-je noter le livreur ?</string>
+    <string name="faq_question_10">Que se passe-t-il si je ne suis pas chez moi lors de la livraison ?</string>
+
+    <!-- Answers -->
+    <string name="faq_answer_1">Oui, vous pouvez suivre votre commande en direct grâce à la géolocalisation du livreur.</string>
+    <string name="faq_answer_2">Adresse de livraison peut être modifiée dans les paramètres du compte avant la validation de la commande.</string>
+    <string name="faq_answer_3">Le paiement peut se faire en espèces à la livraison (paiement sur place).</string>
+    <string name="faq_answer_4">Oui, la sélection d’un créneau horaire est disponible lors de la passation de commande.</string>
+    <string name="faq_answer_5">Vous pouvez consulter le statut en temps réel ou contacter le support client pour assistance.</string>
+    <string name="faq_answer_6">L’annulation est possible dans les 5 premières minutes suivant la commande.</string>
+    <string name="faq_answer_7">Les frais de livraison varient en fonction de votre localisation et du montant de la commande.</string>
+    <string name="faq_answer_8">Vous pouvez nous contacter via la section Aide de application.</string>
+    <string name="faq_answer_9">Oui, vous pouvez noter la prestation du livreur et laisser un avis.</string>
+    <string name="faq_answer_10">La commande sera soit reprogrammée, soit retournée au point de départ selon les cas.</string>
+
+    <!-- Toast messages -->
+    <string name="error_empty_fields">Tous les champs doivent être remplis !</string>
+    <string name="error_invalid_credentials">Identifiant ou mot de passe incorrect !</string>
+    <string name="empty_fields_warning">Veuillez remplir les champs requis</string>
+    <string name="confirm_password_warning">Veuillez confirmer votre mot de passe</string>
+    <string name="password_length_warning">Le mot de passe doit contenir au moins 6 caractères</string>
+    <string name="password_mismatch_warning">Les mots de passe ne correspondent pas</string>
+    <string name="registration_successful">Inscription réussie!</string>
 </resources>

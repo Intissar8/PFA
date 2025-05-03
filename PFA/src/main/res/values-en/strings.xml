@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lab11_Ghannane</string>
+    <string name="change_language">Change Language</string>
+    <string name="english">English</string>
+    <string name="french">French</string>
+    <string name="login_hello">Hello</string>
+    <string name="login_instructions">Please log in with your details</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login_button">Log in</string>
+    <string name="google_login">Log in with Google</string>
+    <string name="register_prompt">Don\'t have an account? Click here</string>
+    <string name="register_title">Register</string>
+    <string name="username_hint">Username</string>
+    <string name="confirm_password_hint">Confirm Password</string>
+    <string name="profile">Profile</string>
+    <string name="home">Home</string>
+    <string name="offers">Offers</string>
+    <string name="history">History</string>
+    <string name="faq">Frequently Asked Questions</string>
+    <string name="registration_failed">Registration failed. Please try again later.</string>
+    <string name="faq_question_1">How can I track my delivery in real time?</string>
+    <string name="faq_question_2">Can I change my delivery address after placing the order?</string>
+    <string name="faq_question_3">What are the available payment methods?</string>
+    <string name="faq_question_4">Can I choose the delivery time?</string>
+    <string name="faq_question_5">What should I do if my order is delayed?</string>
+    <string name="faq_question_6">How can I cancel an order?</string>
+    <string name="faq_question_7">Are there any delivery fees?</string>
+    <string name="faq_question_8">How can I contact customer service?</string>
+    <string name="faq_question_9">Can I rate the delivery person?</string>
+    <string name="faq_question_10">What happens if I am not home during the delivery?</string>
+
+    <!-- Answers -->
+    <string name="faq_answer_1">Yes, you can track your order live using the delivery person’s geolocation.</string>
+    <string name="faq_answer_2">The delivery address can be changed in your account settings before confirming the order.</string>
+    <string name="faq_answer_3">Payment can be made in cash upon delivery (payment on-site).</string>
+    <string name="faq_answer_4">Yes, selecting a time slot is available when placing the order.</string>
+    <string name="faq_answer_5">You can check the real-time status or contact customer support for assistance.</string>
+    <string name="faq_answer_6">Cancellation is possible within the first 5 minutes after the order is placed.</string>
+    <string name="faq_answer_7">Delivery fees vary depending on your location and the order amount.</string>
+    <string name="faq_answer_8">You can contact us via the Help section in the app.</string>
+    <string name="faq_answer_9">Yes, you can rate the delivery person’s service and leave a review.</string>
+    <string name="faq_answer_10">The order will either be rescheduled or returned to the starting point, depending on the situation.</string>
+    <!-- Toast messages -->
+    <string name="error_empty_fields">All fields must be filled!</string>
+    <string name="error_invalid_credentials">Incorrect email or password!</string>
+    <string name="empty_fields_warning">Please fill in the required fields</string>
+    <string name="confirm_password_warning">Please confirm your password</string>
+    <string name="password_length_warning">Password must be at least 6 characters long</string>
+    <string name="password_mismatch_warning">Passwords do not match</string>
+    <string name="registration_successful">Registration successful!</string>
+</resources>

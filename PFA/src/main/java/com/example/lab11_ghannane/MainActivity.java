@@ -15,58 +15,46 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
-//step 1 : declaration
-    EditText etMail,etPassword;
-    Button blogin;
+import com.google.firebase.auth.FirebaseAuth;
 
+public class MainActivity extends BaseActivity {
+    EditText etMail, etPassword;
+    Button blogin;
     TextView tvRegister;
+
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-       //step2 : Recuperation des ids
-        etMail=findViewById(R.id.etMail);
-        etPassword=findViewById(R.id.etPassword);
-        blogin=findViewById(R.id.blogin);
-        tvRegister=findViewById(R.id.tvRegister);
 
-        //step3: Association de listeners
-        blogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //step4: traitement
-                String email=etMail.getText().toString();
-                String password = etPassword.getText().toString();
-                if(TextUtils.isEmpty(email) || TextUtils.isEmpty(password))
-                {
-                    Toast.makeText(getApplicationContext(),"All fields must be filled !",Toast.LENGTH_SHORT).show();
-                }
-                else{
+        etMail = findViewById(R.id.etMail);
+        etPassword = findViewById(R.id.etPassword);
+        blogin = findViewById(R.id.blogin);
+        tvRegister = findViewById(R.id.tvRegister);
 
-                    if(etMail.getText().toString().equals("Intissar") & etPassword.getText().toString().equals("123")){
-                          startActivity(new Intent(MainActivity.this,Profile.class));
-                    }
-                    else {
-                        Toast.makeText(getApplicationContext(),"Login or password incorrect !",Toast.LENGTH_SHORT).show();
-                    }
+        mAuth = FirebaseAuth.getInstance();
 
-                }
+        blogin.setOnClickListener(v -> {
+            String email = etMail.getText().toString().trim();
+            String password = etPassword.getText().toString().trim();
 
+            if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+                Toast.makeText(this, getString(R.string.error_empty_fields), Toast.LENGTH_SHORT).show();
+            } else {
+                mAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                startActivity(new Intent(MainActivity.this, Profile.class));
+                                finish();
+                            } else {
+                                Toast.makeText(this, getString(R.string.error_invalid_credentials), Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
         });
 
-        tvRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //step4: traitement
-                startActivity(new Intent(MainActivity.this,RegisterActivity.class));
-            }
-        });
-
-
-
+        tvRegister.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, RegisterActivity.class)));
     }
 }

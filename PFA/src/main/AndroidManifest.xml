@@ -13,16 +13,16 @@
         android:theme="@style/Theme.Lab11_Ghannane"
         tools:targetApi="31">
         <activity
+            android:name=".translationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".userinfo"
+            android:exported="false" />
+        <activity
+            android:name=".Faq"
+            android:exported="false" />
+        <activity
             android:name=".Profile"
-            android:exported="false" />
-        <activity
-            android:name=".Quiz3"
-            android:exported="false" />
-        <activity
-            android:name=".Quiz2"
-            android:exported="false" />
-        <activity
-            android:name=".Quiz1"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"
