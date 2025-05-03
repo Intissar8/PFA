@@ -18,6 +18,11 @@
     <string name="home">Home</string>
     <string name="offers">Offers</string>
     <string name="history">History</string>
+    <string name="new_password_hint">New Password</string>
+    <string name="change_password_button">Change Password</string>
+    <string name="password_updated_success">Password updated successfully</string>
+    <string name="password_update_failed">Failed to update password</string>
+    <string name="password_too_short">Password must be at least 6 characters</string>
     <string name="faq">Frequently Asked Questions</string>
     <string name="registration_failed">Registration failed. Please try again later.</string>
     <string name="faq_question_1">How can I track my delivery in real time?</string>

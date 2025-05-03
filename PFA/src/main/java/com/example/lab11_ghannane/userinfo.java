@@ -48,7 +48,7 @@ public class userinfo extends BaseActivity {
                 String newPassword = newPasswordInput.getText().toString().trim();
 
                 if (TextUtils.isEmpty(newPassword) || newPassword.length() < 6) {
-                    Toast.makeText(userinfo.this, "Password must be at least 6 characters", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(userinfo.this, getString(R.string.password_too_short), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -56,10 +56,10 @@ public class userinfo extends BaseActivity {
                 if (user != null) {
                     user.updatePassword(newPassword).addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            Toast.makeText(userinfo.this, "Password updated successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(userinfo.this, getString(R.string.password_updated_success), Toast.LENGTH_SHORT).show();
                             newPasswordInput.setText(""); // Clear the field
                         } else {
-                            Toast.makeText(userinfo.this, "Failed to update password", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(userinfo.this, getString(R.string.password_update_failed), Toast.LENGTH_SHORT).show();
                         }
                     });
                 }

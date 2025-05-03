@@ -56,7 +56,7 @@
             android:id="@+id/edit_new_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="New Password"
+            android:hint="@string/new_password_hint"
             android:inputType="textPassword"
             android:drawableLeft="@drawable/baseline_lock_24_sign_up"
             android:layout_marginBottom="12dp" />
@@ -66,7 +66,7 @@
             android:id="@+id/btn_change_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Change Password"
+            android:text="@string/change_password_button"
             android:layout_marginBottom="24dp"
             android:backgroundTint="#03A9F4"
             android:textColor="#FFFFFF"/>

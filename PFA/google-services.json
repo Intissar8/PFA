@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "848418015392",
+    "project_id": "lab11ghannane-34e2102e",
+    "storage_bucket": "lab11ghannane-34e2102e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:848418015392:android:899845aeebd9cf856f21c5",
+        "android_client_info": {
+          "package_name": "com.example.lab11_ghannane"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDZM35Kx17nhsatyC7JV2yC4ISjJ75Q54"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:848418015392:android:bf4ba76d36e772fb6f21c5",
+        "android_client_info": {
+          "package_name": "com.example.quiz_ghannane"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDZM35Kx17nhsatyC7JV2yC4ISjJ75Q54"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

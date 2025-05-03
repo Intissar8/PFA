@@ -17,6 +17,11 @@
     <string name="home">Accueil</string>
     <string name="offers">Offres</string>
     <string name="history">Historique</string>
+    <string name="new_password_hint">Nouveau mot de passe</string>
+    <string name="change_password_button">Changer le mot de passe</string>
+    <string name="password_updated_success">Mot de passe mis à jour avec succès</string>
+    <string name="password_update_failed">Échec de la mise à jour du mot de passe</string>
+    <string name="password_too_short">Le mot de passe doit contenir au moins 6 caractères</string>
     <string name="faq">Questions Fréquemment Posées</string>
     <string name="registration_failed">Échec de inscription. Veuillez réessayer plus tard.</string>
     <!-- Questions -->
