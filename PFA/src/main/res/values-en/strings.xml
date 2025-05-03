@@ -55,4 +55,6 @@
     <string name="password_length_warning">Password must be at least 6 characters long</string>
     <string name="password_mismatch_warning">Passwords do not match</string>
     <string name="registration_successful">Registration successful!</string>
+    <string name="google_sign_in_failed">Google sign-in failed</string>
+    <string name="authentication_failed">Authentication failed</string>
 </resources>
