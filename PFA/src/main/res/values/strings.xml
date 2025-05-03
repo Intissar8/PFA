@@ -56,4 +56,8 @@
     <string name="password_length_warning">Le mot de passe doit contenir au moins 6 caractères</string>
     <string name="password_mismatch_warning">Les mots de passe ne correspondent pas</string>
     <string name="registration_successful">Inscription réussie!</string>
+
+
+    <string name="default_web_client_id">848418015392-p653eg9kqqe6oau697iopuhseostmidc.apps.googleusercontent.com</string>
+
 </resources>

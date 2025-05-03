@@ -12,7 +12,20 @@
           "package_name": "com.example.lab11_ghannane"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "848418015392-p653eg9kqqe6oau697iopuhseostmidc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lab11_ghannane",
+            "certificate_hash": "a236f4bfd7363e44de267fda00414d7142ece47b"
+          }
+        },
+        {
+          "client_id": "848418015392-fggivijv2slo5ap6ua8kv25uiugv10a9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDDZM35Kx17nhsatyC7JV2yC4ISjJ75Q54"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "848418015392-fggivijv2slo5ap6ua8kv25uiugv10a9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     },
@@ -31,7 +49,12 @@
           "package_name": "com.example.quiz_ghannane"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "848418015392-fggivijv2slo5ap6ua8kv25uiugv10a9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDDZM35Kx17nhsatyC7JV2yC4ISjJ75Q54"
@@ -39,7 +62,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "848418015392-fggivijv2slo5ap6ua8kv25uiugv10a9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
