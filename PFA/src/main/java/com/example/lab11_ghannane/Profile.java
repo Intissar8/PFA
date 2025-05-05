@@ -51,7 +51,7 @@ public class Profile extends BaseActivity {
 
         icontext5.setOnClickListener(view -> {
             // Navigate to NotificationsActivity
-          //  startActivity(new Intent(Profile.this, NotificationsActivity.class));
+          startActivity(new Intent(Profile.this, notification_settings.class));
         });
 
         icontext6.setOnClickListener(view -> {
