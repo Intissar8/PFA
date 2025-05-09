@@ -30,14 +30,13 @@ public class MainActivity extends BaseActivity {
     EditText etMail, etPassword;
     Button blogin;
     TextView tvRegister;
-
-    FirebaseAuth mAuth;
-
-    GoogleSignInClient mGoogleSignInClient;
-
     ImageButton bgoogle;
 
+    FirebaseAuth mAuth;
+    GoogleSignInClient mGoogleSignInClient;
+
     private static final int RC_SIGN_IN = 9001;
+    private static final String ADMIN_EMAIL = "admin@gmail.com"; // Replace with your actual admin email
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,14 +50,14 @@ public class MainActivity extends BaseActivity {
         bgoogle = findViewById(R.id.bgoogle);
 
         mAuth = FirebaseAuth.getInstance();
+
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id)) // From google-services.json
+                .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         bgoogle.setOnClickListener(v -> {
-            // Force sign-out before sign-in
             mGoogleSignInClient.signOut().addOnCompleteListener(this, task -> {
                 Intent signInIntent = mGoogleSignInClient.getSignInIntent();
                 startActivityForResult(signInIntent, RC_SIGN_IN);
@@ -75,7 +74,12 @@ public class MainActivity extends BaseActivity {
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
-                                startActivity(new Intent(MainActivity.this, Profile.class));
+                                String currentEmail = mAuth.getCurrentUser().getEmail();
+                                if (ADMIN_EMAIL.equals(currentEmail)) {
+                                    startActivity(new Intent(MainActivity.this, AdminDashboard.class));
+                                } else {
+                                    startActivity(new Intent(MainActivity.this, Profile.class));
+                                }
                                 finish();
                             } else {
                                 Toast.makeText(this, getString(R.string.error_invalid_credentials), Toast.LENGTH_SHORT).show();
@@ -85,11 +89,6 @@ public class MainActivity extends BaseActivity {
         });
 
         tvRegister.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, RegisterActivity.class)));
-
-
-
-
-
     }
 
     @Override
@@ -112,16 +111,11 @@ public class MainActivity extends BaseActivity {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        // Google sign-in success
                         startActivity(new Intent(MainActivity.this, Profile.class));
                         finish();
                     } else {
-                        // Google sign-in failed
                         Toast.makeText(MainActivity.this, getString(R.string.authentication_failed), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
-
-
-
 }
