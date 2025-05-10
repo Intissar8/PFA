@@ -36,7 +36,7 @@ public class AdminDashboard extends AppCompatActivity {
 
         manageLivreursBtn.setOnClickListener(v -> {
             // Navigate to Manage Livreurs Activity
-          //  startActivity(new Intent(AdminDashboard.this, ManageLivreursActivity.class));
+           startActivity(new Intent(AdminDashboard.this, manage_livreur.class));
         });
 
         logoutBtn.setOnClickListener(v -> {

@@ -19,6 +19,18 @@
         android:theme="@style/Theme.Lab11_Ghannane"
         tools:targetApi="31">
         <activity
+            android:name=".manage_livreur"
+            android:exported="false" />
+        <activity
+            android:name=".edit_livreur"
+            android:exported="false" />
+        <activity
+            android:name=".add_livreur"
+            android:exported="false" />
+        <activity
+            android:name=".view_livreurs"
+            android:exported="false" />
+        <activity
             android:name=".EditProductActivity"
             android:exported="false" />
         <activity
