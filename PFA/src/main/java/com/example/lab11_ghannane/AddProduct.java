@@ -27,6 +27,7 @@ import java.util.UUID;
 public class AddProduct extends AppCompatActivity {
 
     private EditText etNom, etPrix, etQuantite, etDescription, etImageUrl;
+    private EditText etDatePromotion, etPrixReduction; // New fields
     private Spinner spinnerCategory;
     private ImageView ivPreview;
     private Button btnAddProduct;
@@ -43,6 +44,8 @@ public class AddProduct extends AppCompatActivity {
         etQuantite = findViewById(R.id.etQuantite);
         etDescription = findViewById(R.id.etDescription);
         etImageUrl = findViewById(R.id.etImageUrl);
+        etDatePromotion = findViewById(R.id.etDatePromotion);     // New
+        etPrixReduction = findViewById(R.id.etPrixReduction);     // New
         ivPreview = findViewById(R.id.ivPreview);
         spinnerCategory = findViewById(R.id.spCategorie);
         btnAddProduct = findViewById(R.id.btnAddProduct);
@@ -54,7 +57,6 @@ public class AddProduct extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categories);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCategory.setAdapter(adapter);
-
 
         // Load image preview when URL is typed
         etImageUrl.setOnFocusChangeListener((v, hasFocus) -> {
@@ -76,6 +78,9 @@ public class AddProduct extends AppCompatActivity {
         String description = etDescription.getText().toString();
         String imageUrl = etImageUrl.getText().toString().trim();
         String categorie = spinnerCategory.getSelectedItem().toString();
+        String datePromotion = etDatePromotion.getText().toString().trim();
+        String prixReductionStr = etPrixReduction.getText().toString().trim();
+        double prixReduction = prixReductionStr.isEmpty() ? 0.0 : Double.parseDouble(prixReductionStr);
 
         if (nom.isEmpty() || prix.isEmpty() || quantite.isEmpty() || description.isEmpty() || imageUrl.isEmpty()) {
             Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT).show();
@@ -93,6 +98,8 @@ public class AddProduct extends AppCompatActivity {
         produit.put("description", description);
         produit.put("category", categorie);
         produit.put("imageUrl", imageUrl);
+        produit.put("datePromotion", datePromotion);
+        produit.put("prixReduction", prixReduction);
 
         db.collection("Produit").add(produit)
                 .addOnSuccessListener(documentReference -> {

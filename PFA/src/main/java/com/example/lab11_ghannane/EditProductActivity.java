@@ -32,6 +32,7 @@ public class EditProductActivity extends AppCompatActivity {
 
     private ImageView imageViewProduct;
     private EditText editTextImageUrl, editTextName, editTextDescription, editTextPrice, editTextQuantity;
+    private EditText editTextDatePromotion, editTextPrixReduction; // New fields
     private Spinner spinnerCategory;
     private Button buttonUpdateProduct;
 
@@ -49,10 +50,12 @@ public class EditProductActivity extends AppCompatActivity {
         editTextDescription = findViewById(R.id.editTextDescription);
         editTextPrice = findViewById(R.id.editTextPrice);
         editTextQuantity = findViewById(R.id.editTextQuantity);
+        editTextDatePromotion = findViewById(R.id.editTextDatePromotion);     // New
+        editTextPrixReduction = findViewById(R.id.editTextPrixReduction);     // New
         spinnerCategory = findViewById(R.id.spinnerCategory);
         buttonUpdateProduct = findViewById(R.id.buttonUpdateProduct);
 
-        // Set up Spinner for category selection
+        // Spinner setup
         String[] categories = {"Alimentation", "Electronique", "Vêtement", "Hygiène", "Cadeaux"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categories);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -61,10 +64,10 @@ public class EditProductActivity extends AppCompatActivity {
         // Get product ID from Intent
         productId = getIntent().getStringExtra("id_produit");
 
-        // Load product data from Firestore
+        // Load data
         loadProductData();
 
-        // Set up "Update Product" button
+        // Handle update button
         buttonUpdateProduct.setOnClickListener(v -> updateProductInFirestore());
     }
 
@@ -74,44 +77,37 @@ public class EditProductActivity extends AppCompatActivity {
 
         productRef.get().addOnSuccessListener(documentSnapshot -> {
             if (documentSnapshot.exists()) {
-                // Retrieve product data from Firestore
                 Produit produit = documentSnapshot.toObject(Produit.class);
 
-                // Fill fields with existing product data
                 if (produit != null) {
                     editTextName.setText(produit.getNom());
                     editTextDescription.setText(produit.getDescription());
                     editTextPrice.setText(String.valueOf(produit.getPrix()));
                     editTextQuantity.setText(String.valueOf(produit.getQuantite()));
-
-                    // Load the current image using Glide
-                    Glide.with(EditProductActivity.this)
-                            .load(produit.getImageUrl())
-                            .into(imageViewProduct);
-
-                    // Set the image URL in the EditText
                     editTextImageUrl.setText(produit.getImageUrl());
+                    Glide.with(this).load(produit.getImageUrl()).into(imageViewProduct);
 
-                    // Set the category in the spinner
-                    String[] categories = {"Alimentation", "Electronique", "Vêtement", "Hygiène", "Cadeaux"};
-                    int spinnerPosition = getCategoryPosition(produit.getCategory(), categories);
+                    // Set category
+                    int spinnerPosition = getCategoryPosition(produit.getCategory(), new String[]{"Alimentation", "Electronique", "Vêtement", "Hygiène", "Cadeaux"});
                     spinnerCategory.setSelection(spinnerPosition);
+
+                    // Set promotion fields if available
+                    editTextDatePromotion.setText(produit.getDatePromotion() != null ? produit.getDatePromotion() : "");
+                    editTextPrixReduction.setText(String.valueOf(produit.getPrixReduction()));
                 }
             } else {
-                Toast.makeText(EditProductActivity.this, "Product not found", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Produit introuvable", Toast.LENGTH_SHORT).show();
             }
-        }).addOnFailureListener(e -> {
-            Toast.makeText(EditProductActivity.this, "Error loading product data", Toast.LENGTH_SHORT).show();
-        });
+        }).addOnFailureListener(e ->
+                Toast.makeText(this, "Erreur de chargement", Toast.LENGTH_SHORT).show()
+        );
     }
 
     private int getCategoryPosition(String category, String[] categories) {
         for (int i = 0; i < categories.length; i++) {
-            if (categories[i].equals(category)) {
-                return i;
-            }
+            if (categories[i].equals(category)) return i;
         }
-        return 0; // Default to the first category if not found
+        return 0;
     }
 
     private void updateProductInFirestore() {
@@ -121,13 +117,16 @@ public class EditProductActivity extends AppCompatActivity {
         String priceStr = editTextPrice.getText().toString().trim();
         String quantityStr = editTextQuantity.getText().toString().trim();
         String imageUrl = editTextImageUrl.getText().toString().trim();
+        String datePromotion = editTextDatePromotion.getText().toString().trim();
+        String prixReductionStr = editTextPrixReduction.getText().toString().trim();
 
-        if (imageUrl.isEmpty()) {
-            Toast.makeText(this, "Please enter an image URL", Toast.LENGTH_SHORT).show();
+        if (name.isEmpty() || description.isEmpty() || priceStr.isEmpty() || quantityStr.isEmpty() || imageUrl.isEmpty()) {
+            Toast.makeText(this, "Veuillez remplir tous les champs obligatoires", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Update the image preview
+        double prixReduction = prixReductionStr.isEmpty() ? 0.0 : Double.parseDouble(prixReductionStr);
+
         Glide.with(this).load(imageUrl).into(imageViewProduct);
 
         Map<String, Object> updatedProduct = new HashMap<>();
@@ -136,25 +135,27 @@ public class EditProductActivity extends AppCompatActivity {
         updatedProduct.put("category", category);
         updatedProduct.put("prix", Double.parseDouble(priceStr));
         updatedProduct.put("quantite", Integer.parseInt(quantityStr));
+        updatedProduct.put("imageUrl", imageUrl);
+        updatedProduct.put("datePromotion", datePromotion);
+        updatedProduct.put("prixReduction", prixReduction);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference productRef = db.collection("Produit").document(productId);
 
+        ProgressDialog dialog = new ProgressDialog(this);
+        dialog.setMessage("Mise à jour du produit...");
+        dialog.show();
+
         productRef.update(updatedProduct)
                 .addOnSuccessListener(unused -> {
-                    // Show success toast
-                    Toast.makeText(this, "Product updated successfully", Toast.LENGTH_SHORT).show();
-
-                    // Navigate to AddProductActivity
-                    Intent intent = new Intent(EditProductActivity.this, manage_produit.class);
-                    startActivity(intent);
-
-                    // Optionally, finish the current activity to prevent going back to it
+                    dialog.dismiss();
+                    Toast.makeText(this, "Produit mis à jour avec succès", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(this, manage_produit.class));
                     finish();
                 })
                 .addOnFailureListener(e -> {
-                    // Show failure toast
-                    Toast.makeText(this, "Failed to update product", Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                    Toast.makeText(this, "Erreur lors de la mise à jour", Toast.LENGTH_SHORT).show();
                 });
     }
 }

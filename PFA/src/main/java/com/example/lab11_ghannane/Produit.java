@@ -8,20 +8,25 @@ public class Produit {
     private double prix;
     private int quantite;
     private String imageUrl;
+    private Double prixReduction; // To store the discount price, if any
+    private String datePromotion; // To store the promotion period
 
     // Empty constructor required for Firestore
     public Produit() {
     }
 
     // Constructor to create a new product
-    public Produit(String id_produit, String nom, String description, String category, double prix, int quantite, String imageUrl) {
+    public Produit(String id_produit, String nom, double prix, int quantite, String description,
+                   String category, String imageUrl, String datePromotion, double prixReduction) {
         this.id_produit = id_produit;
         this.nom = nom;
-        this.description = description;
-        this.category = category;
         this.prix = prix;
         this.quantite = quantite;
+        this.description = description;
+        this.category = category;
         this.imageUrl = imageUrl;
+        this.datePromotion = datePromotion;
+        this.prixReduction = prixReduction;
     }
 
     // Getters and Setters
@@ -79,5 +84,36 @@ public class Produit {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+    public String getDatePromotion() {
+        return datePromotion;
+    }
+
+    public void setDatePromotion(String datePromotion) {
+        this.datePromotion = datePromotion;
+    }
+
+    public double getPrixReduction() {
+        return prixReduction;
+    }
+
+    public void setPrixReduction(double prixReduction) {
+        this.prixReduction = prixReduction;
+    }
+
+    // Method to calculate the reduced price
+    public double getPrixFinal() {
+        if (prixReduction > 0) {
+            return prix - prixReduction;
+        }
+        return prix;
+    }
+
+    // Method to get the discount percentage
+    public double getReductionPercentage() {
+        if (prix > 0 && prixReduction > 0) {
+            return (prixReduction / prix) * 100;
+        }
+        return 0;
     }
 }

@@ -29,6 +29,7 @@
             android:text="Produit Name"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:textColor="#82D2F6"
             android:layout_marginTop="8dp" />
 
         <!-- Product Price -->
@@ -36,6 +37,7 @@
             android:id="@+id/produitPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#0275AD"
             android:text="Prix: 0.00"
             android:textSize="14sp"
             android:layout_marginTop="4dp" />
@@ -45,6 +47,7 @@
             android:id="@+id/produitQuantity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#0275AD"
             android:text="Quantité: 0"
             android:textSize="14sp"
             android:layout_marginTop="4dp" />
@@ -55,6 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Catégorie: Alimentation"
+            android:textColor="#82D2F6"
             android:textSize="14sp"
             android:layout_marginTop="4dp" />
 
@@ -65,9 +69,28 @@
             android:layout_height="wrap_content"
             android:text="Description"
             android:textSize="12sp"
+            android:textColor="#82D2F6"
             android:layout_marginTop="8dp"
             android:maxLines="3"
             android:ellipsize="end" />
+        <TextView
+            android:id="@+id/promotionDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#82D2F6"
+            android:visibility="gone"
+            android:text="Période" />
+
+        <TextView
+            android:id="@+id/promotionInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#0275AD"
+            android:textStyle="bold"
+            android:visibility="gone"
+            android:text="Promotion info" />
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -81,6 +104,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_edit"
+                android:tint="@color/princ_color"
                 android:contentDescription="Modifier"
                 android:layout_marginEnd="16dp"
                android:padding="4dp" />
@@ -90,6 +114,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_delete"
+                android:tint="@color/princ_color"
                 android:contentDescription="Supprimer"
                 android:padding="4dp" />
         </LinearLayout>

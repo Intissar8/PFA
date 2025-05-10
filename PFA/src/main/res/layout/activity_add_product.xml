@@ -30,6 +30,22 @@
             android:layout_height="50dp" />
 
         <EditText
+            android:id="@+id/etDatePromotion"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Date de promotion (ex: 2025-05-10)"
+            android:inputType="text" />
+
+
+        <EditText
+            android:id="@+id/etPrixReduction"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Prix de réduction"
+            android:inputType="numberDecimal" />
+
+
+        <EditText
             android:id="@+id/etDescription"
             android:hint="Description"
             android:layout_width="match_parent"

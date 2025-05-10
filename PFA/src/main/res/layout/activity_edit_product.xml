@@ -69,6 +69,23 @@
             android:inputType="number"
             android:layout_marginBottom="16dp" />
 
+        <EditText
+            android:id="@+id/editTextDatePromotion"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Date de promotion (ex: 2025-05-10)"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/editTextPrixReduction"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Prix de réduction"
+            android:inputType="numberDecimal" />
+
+
+
+
         <!-- Update Button -->
         <Button
             android:id="@+id/buttonUpdateProduct"

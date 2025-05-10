@@ -18,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Nom Prénom"
+            android:textColor="@color/second_color"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -25,12 +26,14 @@
             android:id="@+id/tvAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/second_color"
             android:text="Adresse" />
 
         <TextView
             android:id="@+id/tvCommandCount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/princ_color"
             android:text="Nombre de commandes: 0" />
 
         <LinearLayout
@@ -45,6 +48,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_edit"
+                android:tint="@color/princ_color"
                 android:layout_marginEnd="16dp"
                 android:contentDescription="Modifier" />
 
@@ -53,6 +57,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_delete"
+                android:tint="@color/princ_color"
                 android:contentDescription="Supprimer" />
         </LinearLayout>
     </LinearLayout>
