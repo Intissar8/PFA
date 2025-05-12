@@ -31,17 +31,17 @@ public class Profile extends BaseActivity {
         // Example actions - replace with actual activity navigation or logic
         icontext.setOnClickListener(view -> {
             // Navigate to OrdersActivity or show a Toast, etc.
-          //  startActivity(new Intent(Profile.this, OrdersActivity.class));
+            //  startActivity(new Intent(Profile.this, OrdersActivity.class));
         });
 
         icontext2.setOnClickListener(view -> {
             // Navigate to ProfileDetailsActivity
-           startActivity(new Intent(Profile.this, userinfo.class));
+            startActivity(new Intent(Profile.this, userinfo.class));
         });
 
         icontext3.setOnClickListener(view -> {
             // Navigate to LanguageSettingsActivity
-           startActivity(new Intent(Profile.this, translationActivity.class));
+            startActivity(new Intent(Profile.this, translationActivity.class));
         });
 
         icontext4.setOnClickListener(view -> {
@@ -51,7 +51,7 @@ public class Profile extends BaseActivity {
 
         icontext5.setOnClickListener(view -> {
             // Navigate to NotificationsActivity
-          startActivity(new Intent(Profile.this, notification_settings.class));
+            startActivity(new Intent(Profile.this, notification_settings.class));
         });
 
         icontext6.setOnClickListener(view -> {
@@ -66,14 +66,36 @@ public class Profile extends BaseActivity {
     private void logoutUser() {
         // Clear user session or preferences if needed
         // Redirect to LoginActivity
-        Intent intent = new Intent(Profile.this,MainActivity.class);
+        Intent intent = new Intent(Profile.this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
     }
 
     private void setupBottomNavigation() {
-        // If you want to make nav buttons interactive, give them IDs in XML
-        // and then set click listeners here just like above
+        LinearLayout homeNav = findViewById(R.id.home_nav);
+        LinearLayout productsNav = findViewById(R.id.products_nav);
+        LinearLayout ordersNav = findViewById(R.id.orders_nav);
+        LinearLayout profileNav = findViewById(R.id.profile_nav);
+
+        homeNav.setOnClickListener(view -> {
+            startActivity(new Intent(Profile.this, Home.class));
+            finish(); // optional, to prevent backstack clutter
+        });
+
+        productsNav.setOnClickListener(view -> {
+            // startActivity(new Intent(Profile.this, ProductsActivity.class));
+            finish();
+        });
+
+        ordersNav.setOnClickListener(view -> {
+          //  startActivity(new Intent(Profile.this, OrdersActivity.class));
+            finish();
+        });
+
+        profileNav.setOnClickListener(view -> {
+            // You're already on the profile screen, so maybe highlight it or do nothing
+        });
     }
+
 }

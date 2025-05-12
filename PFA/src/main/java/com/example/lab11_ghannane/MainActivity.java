@@ -78,7 +78,7 @@ public class MainActivity extends BaseActivity {
                                 if (ADMIN_EMAIL.equals(currentEmail)) {
                                     startActivity(new Intent(MainActivity.this, AdminDashboard.class));
                                 } else {
-                                    startActivity(new Intent(MainActivity.this, Profile.class));
+                                    startActivity(new Intent(MainActivity.this, Home.class));
                                 }
                                 finish();
                             } else {
@@ -111,7 +111,7 @@ public class MainActivity extends BaseActivity {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        startActivity(new Intent(MainActivity.this, Profile.class));
+                        startActivity(new Intent(MainActivity.this, Home.class));
                         finish();
                     } else {
                         Toast.makeText(MainActivity.this, getString(R.string.authentication_failed), Toast.LENGTH_SHORT).show();
