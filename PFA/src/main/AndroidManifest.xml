@@ -49,7 +49,7 @@
             android:name=".notification_settings"
             android:exported="false" />
         <activity
-            android:name=".review"
+            android:name=".AddReview"
             android:exported="false" />
         <activity
             android:name=".order_summary"
