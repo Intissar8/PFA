@@ -19,12 +19,12 @@ import java.util.Map;
 public class PanierAdapter extends RecyclerView.Adapter<PanierAdapter.ViewHolder> {
     private Map<String, Produit> produits;
     private Map<String, Integer> quantities;
-    private List<String> productIds;  // List to maintain order of items
+    private List<String> productIds;
 
     public PanierAdapter(Map<String, Produit> produits, Map<String, Integer> quantities) {
         this.produits = produits;
         this.quantities = quantities;
-        this.productIds = new ArrayList<>(produits.keySet());  // Copy keys to maintain order
+        this.productIds = new ArrayList<>(produits.keySet());
     }
 
     @Override
@@ -45,10 +45,26 @@ public class PanierAdapter extends RecyclerView.Adapter<PanierAdapter.ViewHolder
         double itemTotal = qte * p.getPrix();
         holder.itemTotalText.setText("= " + itemTotal + " DH");
 
-        // Load product image using Glide
         Glide.with(holder.itemView.getContext())
                 .load(p.getImageUrl())
                 .into(holder.productImage);
+
+        // Delete button logic
+        holder.deleteButton.setOnClickListener(v -> {
+            int currentPosition = holder.getAdapterPosition();
+            if (currentPosition != RecyclerView.NO_POSITION) {
+                String productId = productIds.get(currentPosition);
+                produits.remove(productId);
+                quantities.remove(productId);
+                productIds.remove(currentPosition);
+                notifyItemRemoved(currentPosition);
+                notifyItemRangeChanged(currentPosition, getItemCount());
+                refresh(); // This will update productIds and call notifyDataSetChanged
+                if (PanierManager.getInstance().getAdapter() != null) {
+                    PanierManager.getInstance().getAdapter().refresh();
+                }
+            }
+        });
     }
 
     @Override
@@ -56,23 +72,22 @@ public class PanierAdapter extends RecyclerView.Adapter<PanierAdapter.ViewHolder
         return productIds.size();
     }
 
-    // Call this if the data changes in the map
     public void refresh() {
-        // Update the productIds list whenever data changes
         this.productIds = new ArrayList<>(produits.keySet());
-        notifyDataSetChanged(); // Notify the adapter that data has changed
+        notifyDataSetChanged();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView nameText, quantityPriceText, itemTotalText;
-        ImageView productImage;  // Add ImageView to hold product image
+        ImageView productImage, deleteButton;
 
         public ViewHolder(View itemView) {
             super(itemView);
             nameText = itemView.findViewById(R.id.nameText);
             quantityPriceText = itemView.findViewById(R.id.quantityPriceText);
             itemTotalText = itemView.findViewById(R.id.itemTotalText);
-            productImage = itemView.findViewById(R.id.productImage);  // Initialize the ImageView
+            productImage = itemView.findViewById(R.id.productImage);
+            deleteButton = itemView.findViewById(R.id.deleteButton);
         }
     }
 }

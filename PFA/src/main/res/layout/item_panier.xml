@@ -39,15 +39,26 @@
                 android:id="@+id/quantityPriceText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:text="2 x 100 DH" />
 
             <TextView
                 android:id="@+id/itemTotalText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="= 200 DH"
-                android:textColor="#FF5722"
+                android:text=" 200 DH"
+                android:textColor="@color/second_color"
                 android:textStyle="bold" />
         </LinearLayout>
+        <!-- DELETE BUTTON -->
+        <ImageView
+            android:id="@+id/deleteButton"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
+            android:src="@android:drawable/ic_delete"
+            android:contentDescription="Delete"
+            android:tint="@color/second_color" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

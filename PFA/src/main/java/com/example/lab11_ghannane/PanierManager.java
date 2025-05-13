@@ -12,13 +12,23 @@ public class PanierManager {
 
     private PanierAdapter adapter;
 
-    private PanierManager() {}
+    private PanierManager() {
+        // private constructor
+    }
 
     public static PanierManager getInstance() {
         if (instance == null) {
             instance = new PanierManager();
         }
         return instance;
+    }
+
+    public void setAdapter(PanierAdapter adapter) {
+        this.adapter = adapter;
+    }
+
+    public PanierAdapter getAdapter() {
+        return adapter;
     }
 
     public void addProduct(Produit produit, int quantity) {
@@ -60,7 +70,5 @@ public class PanierManager {
         }
     }
 
-    public void setAdapter(PanierAdapter adapter) {
-        this.adapter = adapter;
-    }
+
 }
