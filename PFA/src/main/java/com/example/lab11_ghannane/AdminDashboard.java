@@ -31,7 +31,7 @@ public class AdminDashboard extends AppCompatActivity {
 
         manageCommandsBtn.setOnClickListener(v -> {
             // Navigate to Manage Commands Activity
-         //   startActivity(new Intent(AdminDashboard.this, ManageCommandsActivity.class));
+        startActivity(new Intent(AdminDashboard.this, CommandeActivity.class));
         });
 
         manageLivreursBtn.setOnClickListener(v -> {

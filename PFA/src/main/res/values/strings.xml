@@ -61,5 +61,9 @@
 
 
     <string name="default_web_client_id">848418015392-p653eg9kqqe6oau697iopuhseostmidc.apps.googleusercontent.com</string>
-
+    <string-array name="status_options">
+        <item>Order Received</item>
+        <item>In Transit</item>
+        <item>Delivered</item>
+    </string-array>
 </resources>
