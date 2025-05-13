@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -31,16 +30,36 @@
             android:textColor="#82D2F6"
             android:textSize="16sp"
             android:textStyle="bold" />
-
-        <!-- Product Price -->
+        <!-- Promotion Date -->
         <TextView
-            android:id="@+id/productPrice"
+            android:id="@+id/promotionDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Prix: 0.00"
+            android:text="Promo: 10% off - Valid till 12/12/2025"
+            android:textColor="@color/princ_color"
+            android:textSize="14sp"
+            android:visibility="gone"
+            android:layout_marginBottom="4dp"/>
+
+        <!-- Discount Percentage -->
+        <TextView
+            android:id="@+id/discountPercentage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Discount: 10%"
+            android:textColor="@color/princ_color"
+            android:textSize="14sp"
+            android:visibility="gone"
+            android:layout_marginBottom="4dp"/>
+
+        <!-- Final Price after Discount -->
+        <TextView
+            android:id="@+id/finalPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Prix: 40.00"
             android:textColor="#0275AD"
-            android:textSize="14sp" />
+            android:textSize="14sp"/>
 
         <!-- Product Description -->
         <TextView

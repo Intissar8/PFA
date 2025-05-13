@@ -41,9 +41,9 @@ public class PanierAdapter extends RecyclerView.Adapter<PanierAdapter.ViewHolder
         int qte = quantities.get(id);
 
         holder.nameText.setText(p.getNom());
-        holder.quantityPriceText.setText(qte + " x " + p.getPrix() + " DH");
+        holder.quantityPriceText.setText("x" +qte);
         double itemTotal = qte * p.getPrix();
-        holder.itemTotalText.setText("= " + itemTotal + " DH");
+        holder.itemTotalText.setText( itemTotal + " DH");
 
         Glide.with(holder.itemView.getContext())
                 .load(p.getImageUrl())

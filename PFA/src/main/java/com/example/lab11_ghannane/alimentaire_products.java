@@ -63,8 +63,8 @@ public class alimentaire_products extends AppCompatActivity {
                     productList.clear();
                     for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
                         Produit produit = doc.toObject(Produit.class);
-                        if (produit.getPrixReduction() == 0 &&
-                                (produit.getDatePromotion() == null || produit.getDatePromotion().trim().isEmpty())) {
+                        // Only add products with category "Alimentation"
+                        if (produit.getCategory().equals("Alimentation")) {
                             productList.add(produit);
                         }
                     }
@@ -72,4 +72,5 @@ public class alimentaire_products extends AppCompatActivity {
                 })
                 .addOnFailureListener(e -> Log.e("Firestore", "Error fetching products", e));
     }
+
 }

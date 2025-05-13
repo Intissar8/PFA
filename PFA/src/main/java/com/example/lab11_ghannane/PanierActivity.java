@@ -1,5 +1,6 @@
 package com.example.lab11_ghannane;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.LinearLayout;
@@ -143,7 +144,7 @@ public class PanierActivity extends AppCompatActivity {
                 .addOnSuccessListener(documentReference -> {
                     Toast.makeText(this, "Commande enregistrée avec succès", Toast.LENGTH_SHORT).show();
                     PanierManager.getInstance().clearPanier(); // Clear panier
-                    finish(); // Optional: go back to previous screen
+                    startActivity(new Intent(this, delivery_status.class));
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(this, "Échec de la commande", Toast.LENGTH_SHORT).show();

@@ -37,20 +37,24 @@ public class ProductFoodAdapter extends RecyclerView.Adapter<ProductFoodAdapter.
 
     public static class ProductViewHolder extends RecyclerView.ViewHolder {
         ImageView productImage;
-        TextView productName, productPrice, productDescription, quantityText;
+        TextView productName, productPrice, productDescription, quantityText, finalPrice, promotionDate, discountPercentage;
         Button btnAdd, btnRemove;
 
         public ProductViewHolder(View itemView) {
             super(itemView);
             productImage = itemView.findViewById(R.id.productImage);
             productName = itemView.findViewById(R.id.productName);
-            productPrice = itemView.findViewById(R.id.productPrice);
+            productPrice = itemView.findViewById(R.id.finalPrice);
             productDescription = itemView.findViewById(R.id.productDescription);
             quantityText = itemView.findViewById(R.id.quantityText);
+            finalPrice = itemView.findViewById(R.id.finalPrice);
+            promotionDate = itemView.findViewById(R.id.promotionDate);
+            discountPercentage = itemView.findViewById(R.id.discountPercentage);
             btnAdd = itemView.findViewById(R.id.btnAdd);
             btnRemove = itemView.findViewById(R.id.btnRemove);
         }
     }
+
 
     @Override
     public ProductViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -63,7 +67,27 @@ public class ProductFoodAdapter extends RecyclerView.Adapter<ProductFoodAdapter.
         Produit product = productList.get(position);
         holder.productName.setText(product.getNom());
         holder.productDescription.setText(product.getDescription());
+
+        // Display the original price
         holder.productPrice.setText("Prix: " + product.getPrix() + " DH");
+
+        // Set the final price based on the promotion
+        double finalPrice = product.getPrixFinal();
+        holder.finalPrice.setText("Prix: " + finalPrice + " DH");
+
+        // Display promotion details if present
+        if (product.getPrixReduction() > 0) {
+            holder.promotionDate.setVisibility(View.VISIBLE);
+            holder.discountPercentage.setVisibility(View.VISIBLE);
+            holder.promotionDate.setText("Promo: " + product.getDatePromotion());
+
+            // Format the discount percentage to 2 decimal places
+            String formattedDiscount = String.format("%.2f", product.getReductionPercentage());
+            holder.discountPercentage.setText("Discount: " + formattedDiscount + "%");
+        } else {
+            holder.promotionDate.setVisibility(View.GONE);
+            holder.discountPercentage.setVisibility(View.GONE);
+        }
 
         // Set image
         Glide.with(context)
@@ -96,6 +120,7 @@ public class ProductFoodAdapter extends RecyclerView.Adapter<ProductFoodAdapter.
             }
         });
     }
+
 
     @Override
     public int getItemCount() {
