@@ -86,16 +86,18 @@ public class Produit {
         this.imageUrl = imageUrl;
     }
     public String getDatePromotion() {
-        return datePromotion;
+        return datePromotion == null ? "" : datePromotion; // Ensure empty string instead of null
     }
 
     public void setDatePromotion(String datePromotion) {
         this.datePromotion = datePromotion;
     }
 
+    // Add null checks or defaults to prevent crashes
     public double getPrixReduction() {
-        return prixReduction;
+        return prixReduction == 0 ? 0 : prixReduction; // Handle null or 0 value
     }
+
 
     public void setPrixReduction(double prixReduction) {
         this.prixReduction = prixReduction;

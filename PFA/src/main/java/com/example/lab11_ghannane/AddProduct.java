@@ -91,6 +91,7 @@ public class AddProduct extends AppCompatActivity {
         dialog.setMessage("Ajout du produit...");
         dialog.show();
 
+        // First: Create a map without the ID
         HashMap<String, Object> produit = new HashMap<>();
         produit.put("nom", nom);
         produit.put("prix", Double.parseDouble(prix));
@@ -101,15 +102,27 @@ public class AddProduct extends AppCompatActivity {
         produit.put("datePromotion", datePromotion);
         produit.put("prixReduction", prixReduction);
 
+        // Add the document, then update the ID field inside
         db.collection("Produit").add(produit)
                 .addOnSuccessListener(documentReference -> {
-                    dialog.dismiss();
-                    Toast.makeText(this, "Produit ajouté avec succès", Toast.LENGTH_SHORT).show();
-                    finish();
+                    String id = documentReference.getId();
+
+                    // Now update the document to include the ID inside the data
+                    documentReference.update("id_produit", id)
+                            .addOnSuccessListener(aVoid -> {
+                                dialog.dismiss();
+                                Toast.makeText(this, "Produit ajouté avec succès", Toast.LENGTH_SHORT).show();
+                                finish();
+                            })
+                            .addOnFailureListener(e -> {
+                                dialog.dismiss();
+                                Toast.makeText(this, "Ajout sans ID interne: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            });
                 })
                 .addOnFailureListener(e -> {
                     dialog.dismiss();
                     Toast.makeText(this, "Erreur: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
+
 }

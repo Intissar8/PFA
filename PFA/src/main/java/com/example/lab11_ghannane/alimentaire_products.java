@@ -1,10 +1,12 @@
 package com.example.lab11_ghannane;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,9 +33,12 @@ public class alimentaire_products extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_alimentaire_products);
 
+        ImageButton btnPanier = findViewById(R.id.btnPanier);
+        btnPanier.setOnClickListener(v -> {
+            startActivity(new Intent(this, PanierActivity.class));
+        });
 
         recyclerView = findViewById(R.id.recyclerProducts);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -43,12 +48,10 @@ public class alimentaire_products extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         db = FirebaseFirestore.getInstance();
-
         loadAlimentaireProducts();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.setStatusBarColor(ContextCompat.getColor(this, R.color.second_color));
+            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.second_color));
         }
     }
 
@@ -60,16 +63,13 @@ public class alimentaire_products extends AppCompatActivity {
                     productList.clear();
                     for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
                         Produit produit = doc.toObject(Produit.class);
-
-                        // Only show if prixReduction and datePromotion are null
-                        if (produit.getPrixReduction() == 0 && (produit.getDatePromotion() == null || produit.getDatePromotion().isEmpty())) {
+                        if (produit.getPrixReduction() == 0 &&
+                                (produit.getDatePromotion() == null || produit.getDatePromotion().trim().isEmpty())) {
                             productList.add(produit);
                         }
                     }
                     adapter.notifyDataSetChanged();
                 })
-                .addOnFailureListener(e -> {
-                    Log.e("Firestore", "Error fetching products", e);
-                });
+                .addOnFailureListener(e -> Log.e("Firestore", "Error fetching products", e));
     }
 }
