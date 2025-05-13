@@ -126,8 +126,8 @@ public class Home extends AppCompatActivity {
         // Orders navigation
         ordersNav.setOnClickListener(view -> {
             // Navigate to OrdersActivity (ensure the right class is specified)
-           // Intent intent = new Intent(Home.this, OrdersActivity.class);
-           // startActivity(intent);
+           Intent intent = new Intent(Home.this, delivery_status.class);
+          startActivity(intent);
 
         });
 
