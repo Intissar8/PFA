@@ -45,7 +45,7 @@ public class Home extends AppCompatActivity {
 
         // Configurer les listeners pour chaque catégorie
         if (foodCategory != null) {
-          //  foodCategory.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, Food.class)));
+            foodCategory.setOnClickListener(v -> startActivity(new Intent(Home.this, alimentaire_products.class)));
         }
 
         if (hygieneCategory != null) {
