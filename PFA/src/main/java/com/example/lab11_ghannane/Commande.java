@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Commande {
+    private String documentId;
     private String address;
     private Timestamp dateCommande;
     private String username;
@@ -16,6 +17,13 @@ public class Commande {
         // Required empty constructor for Firestore
     }
 
+    public String getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
+    }
     public Commande(String address, Timestamp dateCommande, String username, double total, String status) {
         this.address = address;
         this.dateCommande = dateCommande;

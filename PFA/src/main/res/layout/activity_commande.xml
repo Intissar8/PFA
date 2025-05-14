@@ -6,14 +6,6 @@
     android:padding="16dp"
     android:background="#f4f4f4">
 
-    <TextView
-        android:id="@+id/productsTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="All Commandes"
-        android:textSize="18sp"
-        android:textColor="#000"
-        android:paddingBottom="8dp"/>
 
     <!-- RecyclerView for displaying all commandes -->
     <androidx.recyclerview.widget.RecyclerView

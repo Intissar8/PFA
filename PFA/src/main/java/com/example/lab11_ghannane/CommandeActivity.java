@@ -42,6 +42,7 @@ public class CommandeActivity extends AppCompatActivity {
                     if (!queryDocumentSnapshots.isEmpty()) {
                         for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
                             Commande commande = document.toObject(Commande.class);
+                            commande.setDocumentId(document.getId()); // ✅ Store the Firestore document ID
                             commandeList.add(commande);
                         }
                         commandeAdapter.notifyDataSetChanged();
