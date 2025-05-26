@@ -49,7 +49,7 @@ public class Home extends AppCompatActivity {
         }
 
         if (hygieneCategory != null) {
-           // hygieneCategory.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, Hygiene.class)));
+           hygieneCategory.setOnClickListener(v -> startActivity(new Intent(Home.this, hygiene_products.class)));
         }
 
         if (electronicsCategory != null) {
@@ -57,11 +57,11 @@ public class Home extends AppCompatActivity {
         }
 
         if (giftsCategory != null) {
-          //  giftsCategory.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, Cadeau.class)));
+           giftsCategory.setOnClickListener(v -> startActivity(new Intent(Home.this, cadeaux_products.class)));
         }
 
         if (clothingCategory != null) {
-           // clothingCategory.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, Vetement.class)));
+            clothingCategory.setOnClickListener(v -> startActivity(new Intent(Home.this, vetement_products.class)));
         }
 
         if (offreCategory != null) {
