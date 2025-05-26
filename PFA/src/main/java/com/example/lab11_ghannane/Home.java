@@ -53,7 +53,7 @@ public class Home extends AppCompatActivity {
         }
 
         if (electronicsCategory != null) {
-           // electronicsCategory.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, Electronique.class)));
+           electronicsCategory.setOnClickListener(v -> startActivity(new Intent(Home.this, electronique_products.class)));
         }
 
         if (giftsCategory != null) {
