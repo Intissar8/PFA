@@ -65,7 +65,7 @@ public class Home extends AppCompatActivity {
         }
 
         if (offreCategory != null) {
-           // offreCategory.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, Offre.class)));
+            offreCategory.setOnClickListener(v -> startActivity(new Intent(Home.this, PromotionProductsActivity.class)));
         }
     }
 
