@@ -31,7 +31,7 @@ public class Profile extends BaseActivity {
         // Example actions - replace with actual activity navigation or logic
         icontext.setOnClickListener(view -> {
             // Navigate to OrdersActivity or show a Toast, etc.
-            //  startActivity(new Intent(Profile.this, OrdersActivity.class));
+             startActivity(new Intent(Profile.this, delivery_status.class));
         });
 
         icontext2.setOnClickListener(view -> {

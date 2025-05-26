@@ -1,5 +1,6 @@
 package com.example.lab11_ghannane;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -50,6 +51,14 @@ public class delivery_status extends AppCompatActivity {
 
         String userId = auth.getCurrentUser().getUid();
         fetchLatestCommande(userId);
+
+        btnReview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(delivery_status.this, AddReview.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void fetchLatestCommande(String userId) {

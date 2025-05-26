@@ -91,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:text="Order Received"
                     android:textSize="16sp"
-                    android:textColor="#333333" />
+                    android:textColor="#BDBDBD" />
             </LinearLayout>
 
             <LinearLayout
@@ -115,7 +115,7 @@
                     android:layout_height="wrap_content"
                     android:text="In Transit"
                     android:textSize="16sp"
-                    android:textColor="#333333" />
+                    android:textColor="#BDBDBD" />
             </LinearLayout>
 
             <LinearLayout
@@ -139,7 +139,7 @@
                     android:layout_height="wrap_content"
                     android:text="Delivered"
                     android:textSize="16sp"
-                    android:textColor="#333333" />
+                    android:textColor="#BDBDBD" />
             </LinearLayout>
 
             <!-- Current status text -->
@@ -149,7 +149,7 @@
                 android:layout_height="wrap_content"
                 android:text="Current Status: Order Received"
                 android:textSize="16sp"
-                android:textColor="#4CAF50"
+                android:textColor="#2196F3"
                 android:paddingTop="20dp"
                 android:gravity="center" />
 
